@@ -1,0 +1,48 @@
+
+BMVC an attempt to create a simple PHP MVC framework
+
+Application was created with MVC design pattern in mind. I tried to create 
+a re-usable code base which can be extended depending on the requirements.
+Files are split in four folders: controller, model, view and system.
+
+System folder contains MVC base class files and few helper classes.
+
+All MVC classes inherit the same parent class: bmvc_base, which purpose is to 
+provide globally used objects and config data. For example it would be a place 
+to put session and access control related functionality, etc.
+Per MVC design logic, there are three base classes controller_base, model_base 
+and view_base, which are either used directly or further extended depending on
+the website structure requirements.
+Example of extending the base class would be the controller_main_layout class, 
+which is used to provide a way to change entire layout of the site by changing a 
+layout view used in the class. Note that site layout view uses the same class as 
+other views.
+There are few naming rules as a result of the way routes are decoded.
+Controller class must have 'controller_' prefix and action methods must have
+'action_' prefix. 
+
+The rules of the url are as follows:
+www.mysite.com/controller/action/para0/para1/para2.../para5
+
+URL rewriting will change all incoming requests to index.php
+
+Idea behind the classes is to create a "stub" or foundation of a flexible 
+MVC-like framework, which is as object oriented as possible but simple to setup, 
+use extend to ones needs.
+
+Installation:
+Copy all the files into your www/bmvc folder. If it is localhost you will run it 
+on, then name the folder bmvc as config is already setup like that. If not look
+at things to configure below.
+
+Create the database from the script bmvc_articles_schema.sql. It is MySql dump,
+so it will name the database bmvc and will contain some demo data.
+
+Things to configure:
+/system/bmvc_config.php - set your url root (if it is not http://localhost/bmvc )
+/system/db_connection.php - set your DB connection
+
+Go to http://localhost/bmvc and you should see the home page.
+
+Have Fun,
+Bane
