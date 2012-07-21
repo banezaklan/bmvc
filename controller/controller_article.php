@@ -17,6 +17,7 @@ class controller_article extends controller_main_layout {
         $this->article = new model_article();
     }
     
+    
     public function action_index() {
         parent::action_index();
         
